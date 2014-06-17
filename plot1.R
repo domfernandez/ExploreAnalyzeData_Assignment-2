@@ -1,6 +1,7 @@
 ###
-setwd("C:/Users/Dominic/ExploreAnalyzeData_Assignment-2")
-workingDir <- getwd()
+# setwd("C:/Users/Dominic/ExploreAnalyzeData_Assignment-2")
+# workingDir <- getwd()
+# Source data-files have been un-zipped and placed in the root-directory
 ###
 
 NEI <- readRDS("summarySCC_PM25.rds")
