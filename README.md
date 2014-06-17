@@ -71,3 +71,4 @@ https://github.com/domfernandez/ExploreAnalyzeData_Assignment-2/blob/master/plot
 - How have emissions from motor vehicle sources changed from 1999–2008 in Baltimore City?
 https://github.com/domfernandez/ExploreAnalyzeData_Assignment-2/blob/master/plot5.png
 - Compare emissions from motor vehicle sources in Baltimore City with emissions from motor vehicle sources in Los Angeles County, California (fips == "06037"). Which city has seen greater changes over time in motor vehicle emissions?
+https://github.com/domfernandez/ExploreAnalyzeData_Assignment-2/blob/master/plot6.png
