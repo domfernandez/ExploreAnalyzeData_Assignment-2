@@ -3,16 +3,15 @@ setwd("C:/Users/Dominic/ExploreAnalyzeData_Assignment-2")
 workingDir <- getwd()
 ###
 
-library("plyr")
-# Load data
 NEI <- readRDS("summarySCC_PM25.rds")
 SCC <- readRDS("Source_Classification_Code.rds")
 
-data<-transform(NEI,year=factor(year))
+# Have total PM2.5_emissions decreased in the United States 
+# from 1999 to 2008?
+total.emissions <- aggregate(Emissions ~ year, NEI, sum)
 
-#Plot Data
-plotdata<-ddply(data,.(year),summarize,sum=sum(Emissions))
-png("plot1.png")
-plot(plotdata$year,plotdata$sum,type="n",xlab="year",ylab="total PM2.5 Emission",boxwex=0.05)
-lines(plotdata$year,plotdata$sum)
+png('plot1.png')
+barplot(height=total.emissions$Emissions, names.arg=total.emissions$year,
+        xlab="years", ylab=expression('total PM'[2]*' emission'),
+        main=expression('Total PM'[2]*' emissions at various years'))
 dev.off()

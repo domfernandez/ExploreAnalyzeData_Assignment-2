@@ -3,19 +3,21 @@ setwd("C:/Users/Dominic/ExploreAnalyzeData_Assignment-2")
 workingDir <- getwd()
 ###
 
-library("plyr")
-
 # Load data
-NEI <- readRDS("~/Downloads/exdata-data-NEI_data/summarySCC_PM25.rds")
-SCC <- readRDS("~/Downloads/exdata-data-NEI_data/Source_Classification_Code.rds")
+NEI <- readRDS("summarySCC_PM25.rds")
+SCC <- readRDS("Source_Classification_Code.rds")
 
-data<-transform(NEI,year=factor(year))
-data2<-data[data$fips=="24510",]
+# Have total PM2.5_emissions decreased in Baltimore City, Maryland 
+# from 1999 to 2008?
+Baltimore.emissions <- NEI[NEI$fips=="24510",]
 
-#Plot Data
-plotdata2<-ddply(data2,.(year),summarize,sum=sum(Emissions))
-png("plot2.png")
-plot(plotdata2$year,plotdata2$sum,type="n",xlab="year",ylab="total PM2.5 Emission",
-     main="PM2.5 emission in Baltimore City",boxwex=0.05)
-lines(plotdata2$year,plotdata2$sum)
+# group emissions by year
+Baltimore.emissions.by.year <- aggregate(Emissions ~ year, Baltimore.emissions, sum)
+
+png('plot2.png')
+barplot(height=Baltimore.emissions.by.year$Emissions,
+        names.arg=Baltimore.emissions.by.year$year,
+        xlab="years", ylab=expression('total PM'[2]*' emission'),
+        main=expression('Total PM'[2]*' emissions in Baltimore City, '*
+                          'Maryland at various years'))
 dev.off()
